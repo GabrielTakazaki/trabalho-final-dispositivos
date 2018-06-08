@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuItemPessoa"
+        android:title="@string/Pessoa" />
+    <item
+        android:id="@+id/addChurras"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="@string/Churrasco"
+        app:showAsAction="always" />
+</menu>

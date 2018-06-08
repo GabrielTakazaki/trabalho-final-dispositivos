@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Churrasco</string>
+    <string name="Salvar">Salvar</string>
+    <string name="Cancelar">Cancelar</string>
+    <string name="Pessoa">Pessoa</string>
+    <string name="churrasco">Churrasco</string>
+    <string name="excluir">Excluir</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="Churrasco">Churrasco</string>
+    <string name="PrecoCarne">Preço da Carne</string>
+    <string name="precoBebida">Preço da Bebida</string>
+    <string name="Pessoas">Pessoas</string>
+    <string name="Nome">Nome</string>
+    <string name="Comer" >Comer</string>
+    <string name="Sim">Sim</string>
+    <string name="Nao">Não</string>
+    <string name="Bebida">Bebida</string>
+    <string name="deseja_apagar">Deseja realmente apagar</string>
+    <string name="Aviso">Aviso</string>
+    <string name="confirmacao">Confirmação</string>
+</resources>
