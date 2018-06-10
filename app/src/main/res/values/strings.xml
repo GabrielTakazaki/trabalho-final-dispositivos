@@ -18,4 +18,7 @@
     <string name="deseja_apagar">Deseja realmente apagar</string>
     <string name="Aviso">Aviso</string>
     <string name="confirmacao">Confirmação</string>
+    <string name="alterar_pessoa">Alterar pessoa</string>
+    <string name="nova_pessoa">Nova pessoa</string>
+    <string name="nome_vazio">Nome está vazio!</string>
 </resources>

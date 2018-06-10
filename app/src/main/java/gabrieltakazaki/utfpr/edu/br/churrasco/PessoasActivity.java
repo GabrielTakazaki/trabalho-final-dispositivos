@@ -47,7 +47,7 @@ public class PessoasActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Pessoa pessoa = (Pessoa) parent.getItemAtPosition(position);
 
-                PessoaActivity.alterar (PessoasActivity.this,REQUEST_ALTERAR_TIPO, pessoa);
+                PessoaActivity.alterar (PessoasActivity.this,REQUEST_ALTERAR_PESSOA, pessoa);
 
             }
         });
