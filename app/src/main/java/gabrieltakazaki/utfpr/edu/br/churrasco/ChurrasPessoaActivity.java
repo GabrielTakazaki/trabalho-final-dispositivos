@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -37,7 +36,7 @@ public class ChurrasPessoaActivity extends AppCompatActivity {
     public static final int CHURRAS = 3;
 
 
-    private int     modo;
+    private int modo;
     private Pessoa p;
 
 
@@ -67,7 +66,7 @@ public class ChurrasPessoaActivity extends AppCompatActivity {
         modo = bundle.getInt(MODO);
         final DatabaseChurras con = DatabaseChurras.getInstance(this);
 
-        listViewPessoa = (ListView) findViewById(R.id.lstViewPessoa);
+        listViewPessoa = findViewById(R.id.lstViewPessoa);
         if (listViewPessoa != null) {
             listViewPessoa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -79,11 +78,10 @@ public class ChurrasPessoaActivity extends AppCompatActivity {
                         Churrasco churras = con.getChurrasDAO().queryForId(idChurras);
                         pessoa.setChurras(churras);
                         con.getPessoaDAO().update(pessoa);
-                        ChurrascoActivity.alterar(ChurrasPessoaActivity.this, REQUEST_ALTERAR_PESSOA, churras);
+                        finish();
                     }catch (SQLException e) {
                         Log.e("onCreate()", e.getMessage(), e);
                     }
-
 
                 }
             });
@@ -138,8 +136,8 @@ public class ChurrasPessoaActivity extends AppCompatActivity {
                                 try {
                                     DatabaseChurras con =
                                             DatabaseChurras.getInstance(ChurrasPessoaActivity.this);
-
-                                    con.getPessoaDAO().delete(p);
+                                    p.setChurras(null);
+                                    con.getPessoaDAO().update(p);
 
                                     listaPessoa.remove(p);
 

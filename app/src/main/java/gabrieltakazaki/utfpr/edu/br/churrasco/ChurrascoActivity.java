@@ -3,9 +3,9 @@ package gabrieltakazaki.utfpr.edu.br.churrasco;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBar;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -17,13 +17,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.j256.ormlite.dao.CloseableIterable;
 import com.j256.ormlite.dao.CloseableIterator;
 import com.j256.ormlite.dao.ForeignCollection;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -80,12 +78,12 @@ public class ChurrascoActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        editChurras = (EditText) findViewById(R.id.editTextChurrasco);
-        editCarne = (EditText) findViewById(R.id.editTextCarne);
-        editBebida = (EditText) findViewById(R.id.editTextBebida);
-        buttonAdicionar = (Button) findViewById(R.id.ButtonAdicionar);
+        editChurras = findViewById(R.id.editTextChurrasco);
+        editCarne = findViewById(R.id.editTextCarne);
+        editBebida = findViewById(R.id.editTextBebida);
+        buttonAdicionar = findViewById(R.id.ButtonAdicionar);
 
-        listViewPessoa = (ListView) findViewById(R.id.listViewPessoa);
+        listViewPessoa = findViewById(R.id.listViewPessoa);
         listViewPessoa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -175,6 +173,7 @@ public class ChurrascoActivity extends AppCompatActivity {
 
     public void novaPessoa(View view){
         ChurrasPessoaActivity.churras(this, REQUEST_NOVO_PESSOACHURRAS ,churras);
+        popularPessoa();
     }
 
     private void excluirPessoa(final Pessoa p){
@@ -193,8 +192,8 @@ public class ChurrascoActivity extends AppCompatActivity {
                                 try {
                                     DatabaseChurras con =
                                             DatabaseChurras.getInstance(ChurrascoActivity.this);
-
-                                    con.getPessoaDAO().delete(p);
+                                    p.setChurras(null);
+                                    con.getPessoaDAO().update(p);
 
                                     listaAdapter.remove(p);
 

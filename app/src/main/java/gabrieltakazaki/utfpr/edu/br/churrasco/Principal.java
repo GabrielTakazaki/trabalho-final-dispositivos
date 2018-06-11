@@ -1,10 +1,7 @@
 package gabrieltakazaki.utfpr.edu.br.churrasco;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.ContextMenu;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,21 +9,40 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import gabrieltakazaki.utfpr.edu.br.churrasco.R;
+import java.util.List;
+
 import gabrieltakazaki.utfpr.edu.br.churrasco.model.Churrasco;
+import gabrieltakazaki.utfpr.edu.br.churrasco.model.Pessoa;
 
 public class Principal extends AppCompatActivity {
 
     private ListView listViewChurras;
-    private ArrayAdapter<Churrasco> listaAdapter;
+    private static final int REQUEST_ALTERAR_CHURRAS = 2;
+    List<String> listaDados;
+    ArrayAdapter<Pessoa>  listaAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
 
+        listViewChurras = findViewById(R.id.lstViewPessoa);
 
 
+
+        listViewChurras.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Churrasco churras = (Churrasco) parent.getItemAtPosition(position);
+
+                ChurrascoActivity.alterar(Principal.this,
+                        REQUEST_ALTERAR_CHURRAS,
+                        churras);
+            }
+        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -43,6 +59,11 @@ public class Principal extends AppCompatActivity {
 
             case R.id.menuItemPessoa:
                 ListaPessoaActivity.abrir (this);
+                return true;
+
+            case R.id.menuItemSobre:
+                Tela_Sobre.abrir(this);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

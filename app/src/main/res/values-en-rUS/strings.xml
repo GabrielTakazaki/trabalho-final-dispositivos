@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Barbecue</string>
+    <string name="Salvar">Save</string>
+    <string name="Cancelar">Cancel</string>
+    <string name="Pessoa">Person</string>
+    <string name="churrasco">Barbecue</string>
+    <string name="excluir">Delete</string>
+    <string name="adicionar">Add</string>
+    <string name="Churrasco">Barbecue</string>
+    <string name="PrecoCarne">"Price of meat "</string>
+    <string name="precoBebida">Price of drink</string>
+    <string name="Pessoas">Person</string>
+    <string name="Nome">Name</string>
+    <string name="Comer">Eat</string>
+    <string name="Sim">Yes</string>
+    <string name="Nao">No</string>
+    <string name="Bebida">Drink</string>
+    <string name="deseja_apagar">"Do you really want to erase "</string>
+    <string name="Aviso">Alert</string>
+    <string name="confirmacao">Confirmation</string>
+    <string name="alterar_pessoa">Modify person</string>
+    <string name="nova_pessoa">New person</string>
+    <string name="nome_vazio">Name is empty</string>
+    <string name="novo_churrasco">New Barbecue</string>
+    <string name="adicionar_pessoas">Add Person</string>
+    <string name="nome_curso">Software Engineering</string>
+    <string name="Curso">Course</string>
+    <string name="textRA">1706292</string>
+    <string name="RA">RA</string>
+    <string name="nome_autor">Gabriel Yukio Takazaki</string>
+    <string name="autor">Author</string>
+    <string name="sobre">About</string>
+    <string name="total">Total :</string>
+</resources>

@@ -56,6 +56,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ListaChurrascoActivity" />
         </activity>
+        <activity
+        android:name=".Tela_Sobre"
+        android:parentActivityName=".Principal" >
+        <!-- Parent activity meta-data to support 4.0 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Principal" />
+    </activity>
     </application>
 
 </manifest>

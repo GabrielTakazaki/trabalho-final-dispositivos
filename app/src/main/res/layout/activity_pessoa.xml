@@ -104,4 +104,31 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="403dp" />
     </RadioGroup>
+
+    <EditText
+        android:id="@+id/editTextMusica"
+        android:layout_width="363dp"
+        android:layout_height="106dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="text|textMultiLine"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMusica" />
+
+    <TextView
+        android:id="@+id/textViewMusica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:scrollHorizontally="false"
+        android:shrinkColumns="*"
+        android:text="@string/musica"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupBebida" />
 </android.support.constraint.ConstraintLayout>

@@ -50,7 +50,7 @@ public class ListaChurrascoActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        listViewChurras = (ListView) findViewById(R.id.lstViewPessoa);
+        listViewChurras = findViewById(R.id.lstViewPessoa);
         if (listViewChurras != null) {
             listViewChurras.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -87,7 +87,6 @@ public class ListaChurrascoActivity extends AppCompatActivity {
             Log.e("popularLista()", e.getMessage(), e);
             return;
         }
-
         listaAdapter = new ArrayAdapter<Churrasco>(this,
                 android.R.layout.simple_list_item_1,
                 lista);

@@ -7,8 +7,8 @@
     <string name="excluir">Excluir</string>
     <string name="adicionar">Adicionar</string>
     <string name="Churrasco">Churrasco</string>
-    <string name="PrecoCarne">Preço da Carne</string>
-    <string name="precoBebida">Preço da Bebida</string>
+    <string name="PrecoCarne"> Preço da Carne:</string>
+    <string name="precoBebida"> Preço da Bebida:</string>
     <string name="Pessoas">Pessoas</string>
     <string name="Nome">Nome</string>
     <string name="Comer" >Comer</string>
@@ -23,4 +23,13 @@
     <string name="nome_vazio">Nome está vazio!</string>
     <string name="novo_churrasco">Novo Churrasco</string>
     <string name="adicionar_pessoas">Adicionar Pessoas</string>
+    <string name="nome_curso">Engenharia de Software</string>
+    <string name="Curso">Curso</string>
+    <string name="textRA">1706292</string>
+    <string name="RA">RA</string>
+    <string name="nome_autor">Gabriel Yukio Takazaki</string>
+    <string name="autor">Autor</string>
+    <string name="sobre">Sobre</string>
+    <string name="total">Total :</string>
+    <string name="musica">Escreva suas musicas</string>
 </resources>

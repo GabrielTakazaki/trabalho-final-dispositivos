@@ -2,9 +2,9 @@ package gabrieltakazaki.utfpr.edu.br.churrasco;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -12,7 +12,6 @@ import android.widget.RadioGroup;
 
 import java.sql.SQLException;
 
-import gabrieltakazaki.utfpr.edu.br.churrasco.R;
 import gabrieltakazaki.utfpr.edu.br.churrasco.model.Pessoa;
 import gabrieltakazaki.utfpr.edu.br.churrasco.persistencia.DatabaseChurras;
 import gabrieltakazaki.utfpr.edu.br.churrasco.utils.UtilsGUI;
@@ -28,6 +27,7 @@ public class PessoaActivity extends AppCompatActivity {
     private EditText editNome;
     private RadioGroup radioBeber;
     private RadioGroup radioComer;
+    private EditText editMusica;
 
     private Pessoa pessoa;
     private int modo;
@@ -55,9 +55,10 @@ public class PessoaActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        editNome = (EditText) findViewById(R.id.editTextNome);
-        radioComer = (RadioGroup) findViewById(R.id.radioGroupComer);
-        radioBeber = (RadioGroup) findViewById(R.id.radioGroupBebida);
+        editNome = findViewById(R.id.editTextNome);
+        radioComer = findViewById(R.id.radioGroupComer);
+        radioBeber = findViewById(R.id.radioGroupBebida);
+        editMusica = findViewById(R.id.editTextMusica);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -73,6 +74,7 @@ public class PessoaActivity extends AppCompatActivity {
                 editNome.setText(pessoa.getNome());
                 radioComer.check(pessoa.getComer());
                 radioBeber.check(pessoa.getBeber());
+                editMusica.setText(pessoa.getMusicas());
 
             }catch (SQLException e) {
                 e.printStackTrace();
@@ -91,6 +93,7 @@ public class PessoaActivity extends AppCompatActivity {
         pessoa.setNome(nome);
         pessoa.setComer(radioComer.getCheckedRadioButtonId());
         pessoa.setBeber(radioBeber.getCheckedRadioButtonId());
+        pessoa.setMusicas(editMusica.getText().toString());
         try {
             DatabaseChurras con = DatabaseChurras.getInstance(this);
             if (modo == NOVO) {

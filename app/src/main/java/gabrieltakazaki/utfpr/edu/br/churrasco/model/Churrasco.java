@@ -71,6 +71,6 @@ public class Churrasco {
 
     @Override
     public String toString() {
-        return nome_churras + " Carne :R$" + preco_carne + " Bebida :R$" + preco_bebida;
+        return nome_churras +" Total : R$"+ (preco_bebida+preco_carne);
     }
 }

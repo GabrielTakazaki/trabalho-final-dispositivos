@@ -38,6 +38,9 @@ public class Pessoa {
     @DatabaseField
     private int beber;
 
+    @DatabaseField
+    private String musicas;
+
     @DatabaseField (foreign = true, columnName = CHURRAS_ID)
     private Churrasco churras;
 
@@ -88,5 +91,13 @@ public class Pessoa {
 
     public void setChurras(Churrasco churras) {
         this.churras = churras;
+    }
+
+    public String getMusicas() {
+        return musicas;
+    }
+
+    public void setMusicas(String musicas) {
+        this.musicas = musicas;
     }
 }
