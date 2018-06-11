@@ -8,7 +8,12 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
 public class Churrasco {
-    @DatabaseField (generatedId = true, id = true)
+
+    public static final String NOME = "nome_churras";
+    public static final String CHURRAS_ID = "churras_id";
+
+
+    @DatabaseField (generatedId = true, columnName = CHURRAS_ID)
     private int id_churrasco;
 
     @DatabaseField (canBeNull = false)
@@ -64,5 +69,8 @@ public class Churrasco {
         this.pessoas = pessoas;
     }
 
-
+    @Override
+    public String toString() {
+        return nome_churras + " Carne :R$" + preco_carne + " Bebida :R$" + preco_bebida;
+    }
 }

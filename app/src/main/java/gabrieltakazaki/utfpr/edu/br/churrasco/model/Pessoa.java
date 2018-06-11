@@ -3,17 +3,33 @@ package gabrieltakazaki.utfpr.edu.br.churrasco.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.util.Comparator;
+
 @DatabaseTable
 public class Pessoa {
 
+    public static Comparator<Pessoa> comparador = new Comparator<Pessoa>() {
+        @Override
+        public int compare(Pessoa p1, Pessoa p2) {
 
-    public static final String DESCRICAO = "descricao";
-    public static final String PESSOA_ID = "pessoa_id";
+            int ordemPessoa = p1.getNome().compareToIgnoreCase(p2.getNome());
 
-    @DatabaseField (generatedId = true, id = true)
+            if (ordemPessoa == 0){
+                return p1.getNome().compareToIgnoreCase(p2.getNome());
+            }else{
+                return ordemPessoa;
+            }
+        }
+    };
+
+    public static final String NOME = "nome";
+    public static final String PESSOA_ID = "id_pessoa";
+    public static final String CHURRAS_ID = "churras_id";
+
+    @DatabaseField (generatedId = true, columnName = PESSOA_ID)
     private int id_pessoa;
 
-    @DatabaseField (canBeNull = false)
+    @DatabaseField (canBeNull = false, columnName = NOME)
     private String nome;
 
     @DatabaseField
@@ -22,7 +38,7 @@ public class Pessoa {
     @DatabaseField
     private int beber;
 
-    @DatabaseField (foreign = true)
+    @DatabaseField (foreign = true, columnName = CHURRAS_ID)
     private Churrasco churras;
 
     public Pessoa () {
@@ -45,14 +61,6 @@ public class Pessoa {
         this.id_pessoa = id_pessoa;
     }
 
-    public Churrasco getChurras() {
-        return churras;
-    }
-
-    public void setChurras(Churrasco churras) {
-        this.churras = churras;
-    }
-
     public int getComer() {
         return comer;
     }
@@ -72,5 +80,13 @@ public class Pessoa {
     @Override
     public String toString() {
         return nome;
+    }
+
+    public Churrasco getChurras() {
+        return churras;
+    }
+
+    public void setChurras(Churrasco churras) {
+        this.churras = churras;
     }
 }

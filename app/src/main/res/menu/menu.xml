@@ -3,11 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menuItemChurrasco"
+        android:title="@string/Churrasco" />
+    <item
         android:id="@+id/menuItemPessoa"
         android:title="@string/Pessoa" />
-    <item
-        android:id="@+id/addChurras"
-        android:icon="@android:drawable/ic_input_add"
-        android:title="@string/Churrasco"
-        app:showAsAction="always" />
 </menu>

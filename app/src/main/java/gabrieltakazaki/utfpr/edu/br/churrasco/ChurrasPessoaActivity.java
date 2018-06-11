@@ -19,17 +19,38 @@ import android.widget.ListView;
 import java.sql.SQLException;
 import java.util.List;
 
+import gabrieltakazaki.utfpr.edu.br.churrasco.model.Churrasco;
 import gabrieltakazaki.utfpr.edu.br.churrasco.model.Pessoa;
 import gabrieltakazaki.utfpr.edu.br.churrasco.persistencia.DatabaseChurras;
 import gabrieltakazaki.utfpr.edu.br.churrasco.utils.UtilsGUI;
 
-public class PessoasActivity extends AppCompatActivity {
+public class ChurrasPessoaActivity extends AppCompatActivity {
 
     private ListView listViewPessoa;
     private ArrayAdapter<Pessoa> listaPessoa;
 
     private static final int REQUEST_NOVA_PESSOA = 1;
     private static final int REQUEST_ALTERAR_PESSOA = 2;
+
+    public static final String MODO       = "MODO";
+    public static final String ID_CHURRAS = "ID_CHURRAS";
+    public static final int CHURRAS = 3;
+
+
+    private int     modo;
+    private Pessoa p;
+
+
+    public static void churras(Activity activity, int requestCode, Churrasco c){
+
+        Intent intent = new Intent(activity, ChurrasPessoaActivity.class);
+
+        intent.putExtra(MODO, CHURRAS);
+        intent.putExtra(ID_CHURRAS, c.getId_churrasco());
+
+        activity.startActivityForResult(intent, CHURRAS);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +61,37 @@ public class PessoasActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        listViewPessoa = (ListView) findViewById(R.id.listViewPessoa);
 
-        listViewPessoa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Pessoa pessoa = (Pessoa) parent.getItemAtPosition(position);
+        Intent intent = getIntent();
+        final Bundle bundle = intent.getExtras();
+        modo = bundle.getInt(MODO);
+        final DatabaseChurras con = DatabaseChurras.getInstance(this);
 
-                PessoaActivity.alterar (PessoasActivity.this,REQUEST_ALTERAR_PESSOA, pessoa);
+        listViewPessoa = (ListView) findViewById(R.id.lstViewPessoa);
+        if (listViewPessoa != null) {
+            listViewPessoa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Pessoa pessoa = (Pessoa) parent.getItemAtPosition(position);
 
-            }
-        });
+                    int idChurras = bundle.getInt(ID_CHURRAS);
+                    try {
+                        Churrasco churras = con.getChurrasDAO().queryForId(idChurras);
+                        pessoa.setChurras(churras);
+                        con.getPessoaDAO().update(pessoa);
+                        ChurrascoActivity.alterar(ChurrasPessoaActivity.this, REQUEST_ALTERAR_PESSOA, churras);
+                    }catch (SQLException e) {
+                        Log.e("onCreate()", e.getMessage(), e);
+                    }
+
+
+                }
+            });
+        }
         popularLista();
         registerForContextMenu(listViewPessoa);
-        setTitle ("Pessoas");
+
+        setTitle(R.string.adicionar_pessoas);
     }
 
     private void popularLista() {
@@ -63,7 +101,7 @@ public class PessoasActivity extends AppCompatActivity {
             DatabaseChurras con = DatabaseChurras.getInstance(this);
             lista = con.getPessoaDAO()
                     .queryBuilder()
-                    .orderBy(Pessoa.DESCRICAO,true)
+                    .orderBy(Pessoa.NOME,true)
                     .query();
 
 
@@ -71,8 +109,10 @@ public class PessoasActivity extends AppCompatActivity {
             Log.e("popularLista()", e.getMessage(), e);
             return;
         }
-        listaPessoa = new ArrayAdapter<Pessoa>(this, android.R.layout.simple_list_item_1,lista);
-        listViewPessoa.setAdapter(listaPessoa);
+        if (lista != null) {
+            listaPessoa = new ArrayAdapter<Pessoa>(this, android.R.layout.simple_list_item_1,lista);
+            listViewPessoa.setAdapter(listaPessoa);
+        }
     }
     private void excluirPessoa (final Pessoa p) {
         try {
@@ -97,7 +137,7 @@ public class PessoasActivity extends AppCompatActivity {
 
                                 try {
                                     DatabaseChurras con =
-                                            DatabaseChurras.getInstance(PessoasActivity.this);
+                                            DatabaseChurras.getInstance(ChurrasPessoaActivity.this);
 
                                     con.getPessoaDAO().delete(p);
 
@@ -117,7 +157,7 @@ public class PessoasActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if ((requestCode == REQUEST_NOVA_PESSOA || requestCode == REQUEST_ALTERAR_PESSOA)
                 && resultCode == Activity.RESULT_OK){
 

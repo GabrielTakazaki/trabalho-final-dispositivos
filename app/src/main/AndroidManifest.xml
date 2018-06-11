@@ -16,8 +16,46 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChurrascoActivity" />
-        <activity android:name=".PessoaActivity"></activity>
+        <activity
+            android:name=".PessoaActivity"
+            android:parentActivityName=".ListaPessoaActivity" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListaPessoaActivity" />
+        </activity>
+        <activity
+            android:name=".ListaPessoaActivity"
+            android:parentActivityName=".Principal" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Principal" />
+        </activity>
+        <activity
+            android:name=".ChurrascoActivity"
+            android:parentActivityName=".ListaChurrascoActivity" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListaChurrascoActivity" />
+        </activity>
+        <activity
+            android:name=".ListaChurrascoActivity"
+            android:parentActivityName=".Principal" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Principal" />
+        </activity>
+        <activity
+            android:name=".ChurrasPessoaActivity"
+            android:parentActivityName=".ListaChurrascoActivity" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListaChurrascoActivity" />
+        </activity>
     </application>
 
 </manifest>

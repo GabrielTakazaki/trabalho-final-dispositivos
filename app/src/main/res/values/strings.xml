@@ -21,4 +21,6 @@
     <string name="alterar_pessoa">Alterar pessoa</string>
     <string name="nova_pessoa">Nova pessoa</string>
     <string name="nome_vazio">Nome está vazio!</string>
+    <string name="novo_churrasco">Novo Churrasco</string>
+    <string name="adicionar_pessoas">Adicionar Pessoas</string>
 </resources>

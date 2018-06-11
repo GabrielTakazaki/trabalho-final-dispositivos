@@ -24,6 +24,7 @@ public class PessoaActivity extends AppCompatActivity {
     public static final int    NOVO    = 1;
     public static final int    ALTERAR = 2;
 
+
     private EditText editNome;
     private RadioGroup radioBeber;
     private RadioGroup radioComer;
@@ -31,10 +32,10 @@ public class PessoaActivity extends AppCompatActivity {
     private Pessoa pessoa;
     private int modo;
 
-    public static void novo (Activity activity, int requestCod) {
+    public static void novo (Activity activity, int requestCode) {
         Intent intent = new Intent(activity, PessoaActivity.class);
         intent.putExtra(MODO, NOVO);
-        activity.startActivityForResult(intent,NOVO);
+        activity.startActivityForResult(intent, NOVO);
     }
 
     public static void alterar (Activity activity, int requestCode, Pessoa p) {
@@ -44,6 +45,7 @@ public class PessoaActivity extends AppCompatActivity {
 
         activity.startActivityForResult(intent, ALTERAR);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

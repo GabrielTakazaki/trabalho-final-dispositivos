@@ -1,7 +1,12 @@
 package gabrieltakazaki.utfpr.edu.br.churrasco;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,14 +24,28 @@ public class Principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
 
-        listViewChurras = (ListView) findViewById(R.id.lstViewPessoa);
-        listViewChurras.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Churrasco churras = (Churrasco) parent.getItemAtPosition(position);
 
 
-            }
-        });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menuItemChurrasco:
+                ListaChurrascoActivity.abrir(this);
+                return true;
+
+            case R.id.menuItemPessoa:
+                ListaPessoaActivity.abrir (this);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }
